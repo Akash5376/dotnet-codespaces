@@ -1,0 +1,14 @@
+{
+	"servers": {
+		"my-mcp-server-5746a636": {
+			"type": "stdio",
+			"command": "dotnet",
+			"args": [
+				"run",
+				"--project",
+				"/workspaces/dotnet-codespaces/TestApplication/TestApplication.csproj"
+			]
+		}
+	},
+	"inputs": []
+}

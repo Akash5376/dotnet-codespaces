@@ -12,7 +12,7 @@ builder.Configuration
     .AddUserSecrets<Program>()
     .AddEnvironmentVariables();
 
-var planeApiKey = builder.Configuration["PlaneAPIKey"];
+var planeApiKey = builder.Configuration["PlaneApiKey"];
 var baseUrl = builder.Configuration["BaseUrl"];
 var workspace = builder.Configuration["Workspace"];
 var projectId = builder.Configuration["ProjectId"];
