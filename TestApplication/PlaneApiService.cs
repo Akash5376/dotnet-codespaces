@@ -42,7 +42,7 @@ public class PlaneApiService
         catch(Exception ex)
         {
             Console.WriteLine($"Error in GetProjectStatesAsync: {ex.Message}");       
-            return $"Error getting project states: {ex}";    
+            return $"Error getting project states: {ex.StackTrace}";    
         }
         
     }
