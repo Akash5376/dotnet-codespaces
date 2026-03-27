@@ -118,8 +118,8 @@ public class PlaneApiService
                 priority = priority,
                 description_html = descriptionHtml,
                 state = stateId,
-                start_date = startDate?.ToString("o"),
-                end_date = endDate?.ToString("o")
+                start_date = startDate?.ToString("yyyy-MM-dd"),
+                target_date = endDate?.ToString("yyyy-MM-dd")
             };
 
             var jsonContent = JsonSerializer.Serialize(requestBody);

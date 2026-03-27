@@ -5,14 +5,14 @@ using ModelContextProtocol.Server;
 [McpServerToolType]
 public class PlaneTools
 {
-    [McpServerTool, Description("Get all possible stauts that a work item could be created in. These statuses denote where a work item would be in typical kanban workflows.")]
+    [McpServerTool, Description("Get all possible stauts that a work item could be created in. These statuses denote where a work item would be in typical kanban workflows.Do not include the ids of the states in the prompt.")]
     public static async Task<string> GetAllWorkItemStatuses(PlaneApiService planeApiService)
     {
         var statuses = await planeApiService.GetProjectStatesAsync();
         return JsonSerializer.Serialize(statuses);
     }
 
-    [McpServerTool, Description("This tools allows for the creation of a work item in plane, in the given state")]
+    [McpServerTool, Description("This tools allows for the creation of a work item in plane, in the given state.Do not include the ids of the states in the prompt.")]
     public static async Task<string> CreateWorkItem(
         PlaneApiService planeApiService,
         [Description("The title or main headline for the work item - keep it brief")] string name, 
@@ -24,14 +24,14 @@ public class PlaneTools
        return JsonSerializer.Serialize(workItem); 
     }
 
-    [McpServerTool, Description("Get all work items in the project.")]
+    [McpServerTool, Description("Get all work items in the project. Do not include the work item id in the prompt. For example : 1. Name : Test Work Item 1, State: To Do; 2. Name: Test Work Item 2, State: In Progress.")]
     public static async Task<string> GetAllWorkItems(PlaneApiService planeApiService)
     {
         var workItems = await planeApiService.GetAllWorkItemsAsync();
         return JsonSerializer.Serialize(workItems);
     }
 
-    [McpServerTool, Description("Update the details of a work item, such as its state, priority, description, and start and end dates.")]
+    [McpServerTool, Description("Update the details of a work item, such as its state, priority, description, and start and end dates.Do not include the ids of the work items or states in the prompt.")]
     public static async Task<string> UpdateWorkItem(
         PlaneApiService planeApiService,
         [Description("The id of the work item to be updated, derived from the GetAllWorkItems tool")] string workItemId,
@@ -47,7 +47,7 @@ public class PlaneTools
         return JsonSerializer.Serialize(updatedWorkItem);
     }   
 
-    [McpServerTool, Description("Delete a work item from the project.")]
+    [McpServerTool, Description("Delete a work item from the project.DO not include the ids of the work items in the prompt.")]
     public static async Task<string> DeleteWorkItem(
         PlaneApiService planeApiService,
         [Description("The id of the work item to be deleted, derived from the GetAllWorkItems tool")] string workItemId
